@@ -34,8 +34,8 @@ Tables involved:
 * A [NonVisualTable](http://www.lightstreamer.com/docs/client_flex_asdoc/com/lightstreamer/as_client/NonVisualTable.html) containing 10 items, subscribed to in <b>MERGE</b> mode, used to get the events to write into the Flex TextArea.
 
 
-Compile and Deploy The Demo
----------------------------
+Build and Run
+-------------
 
 The /Flex4_StockListDemo folder of this project is comprised of the following folders:
 
