@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--
+  LIGHTSTREAMER - www.lightstreamer.com
+  Flex Demo
+  
+  Copyright 2013 Weswit s.r.l.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <title>Lightstreamer :: Flex :: Stock-List Demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css" media="screen"> 
+      html, body  { 
+        height:100%;
+        width:92%;        
+      }
+      body { 
+        margin:0; 
+        padding:0; 
+        overflow:auto; 
+        text-align:center; 
+        background-color: #003607; 
+      }   
+      #flashContent { 
+        display:none; 
+      }
+    </style>
+    <script type="text/javascript" src="swfobject.js"></script>
+      
+    <script language="JavaScript" type="text/javascript">
+      // Push Server Host Configuration: 
+      // Automatically decide the host to connect to based on the location the
+      // page was downloaded from. It uses the same hostname, port, and protocol
+      // as the web server, except when the page was downloaded from
+      // the Lightstreamer web site; in this case, use "push50.lightstreamer.com"
+      // as the push server.
+      // If you deploy this demo on your servers, you can statically configure
+      // these parameters.
+      // These values are passed to the swf file through FlashVars
+      // (see http://help.adobe.com/en_US/Flex/4.0/UsingSDK/WS2db454920e96a9e51e63e3d11c0bf626ae-7feb.html#WS2db454920e96a9e51e63e3d11c0bf69084-7f5e )
+      var _host = location.hostname;
+      if (_host.toLowerCase().indexOf("lightstreamer.com") > -1) {
+        _host = "push50.lightstreamer.com";
+      }
+      var _port = location.port;
+      var _protocol = location.protocol;
+      _protocol = _protocol.substring(0,_protocol.length-1);
+      if (!_port) {
+        if (_protocol.toLowerCase() == "http") {
+          _port = 80;
+        } else {
+          _port = 443;
+        }
+      }
+      
+      function moveOut(place) {
+        document.location.href = place;
+      }
+      
+      <!-- For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. --> 
+      var swfVersionStr = "10.0.0";
+      <!-- To use express install, set to playerProductInstall.swf, otherwise the empty string. -->
+      var xiSwfUrlStr = "playerProductInstall.swf";
+      var flashvars = {
+        protocol: _protocol,
+        port: _port,
+        host: _host              
+      };
+      var params = {};
+      params.quality = "high";
+      params.bgcolor = "#003607";
+      params.allowscriptaccess = "sameDomain";
+      params.allowfullscreen = "true";
+      var attributes = {};
+      attributes.id = "Flex4StockListDemo";
+      attributes.name = "Flex4StockListDemo";
+      attributes.align = "middle";
+      swfobject.embedSWF(
+          "Flex4StockListDemo.swf", "flashContent", 
+          "100%", "100%", 
+          swfVersionStr, xiSwfUrlStr, 
+          flashvars, params, attributes);
+      <!-- JavaScript enabled so display the flashContent div in case it is not replaced with a swf object. -->
+      swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+
+
+
+  
+      var needsAlert = false;
+      
+      //it seems that the issue with IE7 has been solved so we remove the work-around
+      /*if(navigator.appName.indexOf("Microsoft") != -1 && navigator.userAgent.indexOf("MSIE 7") != -1) {
+        needsAlert = true;
+      }*/
+      
+      
+      function handleUnload() {
+        var obj = swfobject.getObjectById("Flex4StockListDemo");
+        if (obj && obj.onUnload) {
+          // sometimes a socket remains open even if the Flash player is closed.
+          // To avoid the connection pool saturation we call an exposed ActionScript
+          // method that explicitly closes the connection
+          obj.onUnload();
+          if (needsAlert) {
+            // some extra time may be needed while flex is handling the closure of the socket
+            // this workaround at the moment is not used 
+            alert("Tab is being closed");
+          }
+        }
+      }
+      
+      var eventName = "unload";
+      if (typeof window.addEventListener != "undefined") {
+        window.addEventListener(eventName, handleUnload, false);
+        
+      } else if(typeof document.addEventListener != "undefined") {
+        document.addEventListener(eventName, handleUnload, false);
+    
+      } else if(typeof window.attachEvent != "undefined") {
+        window.attachEvent("on"+eventName, handleUnload);
+      } 
+         
+    
+    </script>
+  </head>
+
+  <body>
+    <div id="GitHubRibbon">
+      <a href="https://github.com/Weswit/Lightstreamer-example-StockList-client-flex" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0; z-index:1" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+    </div>
+    <div id="flashContent">
+      <p>
+          To view this page ensure that Adobe Flash Player version 
+        <script>
+          document.write(swfVersionStr);
+        </script>        
+          or greater is installed. 
+      </p>
+      <script type="text/javascript"> 
+        var pageHost = ((document.location.protocol == "https:") ? "https://" :  "http://"); 
+        document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" 
+                + pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" ); 
+      </script>
+    </div>
+    
+    <noscript>
+      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%" id="Flex4StockListDemo">
+        <param name="movie" value="Flex4StockListDemo.swf" />
+        <param name="quality" value="high" />
+        <param name="bgcolor" value="#003607" />
+        <param name="allowScriptAccess" value="sameDomain" />
+        <param name="allowFullScreen" value="true" />
+        <!--[if !IE]>-->
+          <object type="application/x-shockwave-flash" data="Flex4StockListDemo.swf" width="100%" height="100%">
+            <param name="quality" value="high" />
+            <param name="bgcolor" value="#003607" />
+            <param name="allowScriptAccess" value="sameDomain" />
+            <param name="allowFullScreen" value="true" />
+        <!--<![endif]-->
+        <!--[if gte IE 6]>-->
+          <p> 
+            Either scripts and active content are not permitted to run or Adobe Flash Player version
+            <script>
+              document.write(swfVersionStr);
+            </script>  
+            or greater is not installed.
+          </p>
+        <!--<![endif]-->
+            <a href="http://www.adobe.com/go/getflashplayer">
+                <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash Player" />
+            </a>
+        <!--[if !IE]>-->
+        </object>
+        <!--<![endif]-->
+      </object>
+    </noscript>
+    
+  </body>
+  
+</html>
