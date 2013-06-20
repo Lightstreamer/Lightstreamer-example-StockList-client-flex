@@ -84,14 +84,14 @@ The /Air4_StockListDemo directory contains the AIR version of the FlexStockListD
 
 The example is comprised of the following folders:
 
-* /src
+* /src<br>
   Contains the sources to build the AIR application.
 
 * /lib<br>
   Should contain the Lightstreamer library to be used for the build process.<br>
   Please, download the [Lightstreamer distribution](http://www.lightstreamer.com/download) and copy the Lightstreamer_as_client.swc file from the Lightstreamer Flex Client SDK (that is located under the DOCS-SDKs/sdk_client_flex/lib folder) into this folder of the project.
 
-* /deploy
+* /deploy<br>
   Should contain the AIR package, ready to be installed.
 
 In order to install and run the AIR application, the [Adobe AIR runtime](http://get.adobe.com/air/) is required.<br>
