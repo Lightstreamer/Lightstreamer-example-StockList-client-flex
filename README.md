@@ -110,4 +110,4 @@ See Also
 Lightstreamer Compatibility Notes
 ---------------------------------
 
-- Compatible with Lightstreamer JavaScript Client library version 6.0 or newer.
+- Compatible with Lightstreamer Flex client API version 2.1 or newer.
