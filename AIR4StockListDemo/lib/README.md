@@ -1,0 +1,1 @@
+Drop here Lightstreamer_as_client.swc from the Lightstreamer Flex Client Library.

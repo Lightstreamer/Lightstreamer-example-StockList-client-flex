@@ -5,7 +5,7 @@ Lightstreamer StockList Demo Client for Adobe Flex SDK
 This project includes different demos for Adobe Flex SDK based on Lightstreamer StockList Adapter:
 
 * Flex :: Stock-List Demo
-* AIR  :: Stock-List Demo (To be add)
+* AIR  :: Stock-List Demo
 
 Flex :: Stock-List Demo
 -----------------------
@@ -40,7 +40,7 @@ Build and Run
 The /Flex4_StockListDemo folder of this project is comprised of the following folders:
 
 * /src<br>
-  Contains the sources to build the Flex application.
+  Contains the sources to build the Flex application. The code is based on Flex 4 SDK.
 
 * /lib<br>
   Should contain the Lightstreamer library to be used for the build process.<br>
@@ -58,6 +58,47 @@ See the <flex_crossdomain_enabled> element in the Server configuration file for 
 
 Anyway the [QUOTE_ADAPTER](https://github.com/Weswit/Lightstreamer-example-Stocklist-adapter-java) and [LiteralBasedProvider](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java) have to be deployed in your local Lightstreamer server instance. The factory configuration of Lightstreamer server already provides this adapter deployed.<br>
 The demos are now ready to be launched.
+
+AIR  :: Stock-List Demo
+-----------------------
+
+<table>
+  <tr>
+    <td style="text-align: left">
+      &nbsp;<a href="http://www.lightstreamer.com/demo/AIR_StockListDemo/LightstreamerAIRDemoFlex4.air" target="_blank"><img src="http://www.lightstreamer.com/img/demo/screen_air.png"></a>&nbsp;
+      
+    </td>
+    <td>
+      &nbsp;Click here to download and install the application:<br>
+      &nbsp;<a href="http://www.lightstreamer.com/demo/AIR_StockListDemo/LightstreamerAIRDemoFlex4.air" target="_blank">http://www.lightstreamer.com/demo/AIR_StockListDemo/LightstreamerAIRDemoFlex4.air/</a>
+    </td>
+  </tr>
+</table>
+
+This is the AIR version of the [Flex Demo](https://github.com/Weswit/Lightstreamer-example-StockList-client-flex#flex--stock-list-demo).
+
+Build and Run
+-------------
+
+The /Air4_StockListDemo directory contains the AIR version of the FlexStockListDemo example. The code is based on Flex 4 SDK.
+
+The example is comprised of the following folders:
+
+* /src
+  Contains the sources to build the AIR application.
+
+* /lib<br>
+  Should contain the Lightstreamer library to be used for the build process.<br>
+  Please, download the [Lightstreamer distribution](http://www.lightstreamer.com/download) and copy the Lightstreamer_as_client.swc file from the Lightstreamer Flex Client SDK (that is located under the DOCS-SDKs/sdk_client_flex/lib folder) into this folder of the project.
+
+* /deploy
+  Should contain the AIR package, ready to be installed.
+
+In order to install and run the AIR application, the [Adobe AIR runtime](http://get.adobe.com/air/) is required.<br>
+
+By the current configuration, specified in "AIR4StockListDemo.mxml" and used in the provided AIR package, the demo tries to connect to the demo server currently running on Lightstreamer website.
+The demo can be reconfigured and recompiled in order to connect to the local installation of Lightstreamer Server. The host name, the port number, the Adapter Set names and the Data Adapter names should all be changed in the source code.
+
 
 See Also
 --------

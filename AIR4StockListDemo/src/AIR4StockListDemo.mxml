@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+             xmlns:s="library://ns.adobe.com/flex/spark" 
+             xmlns:mx="library://ns.adobe.com/flex/mx"
+             xmlns:my="flex_demo.*" 
+             xmlns:ns="com.lightstreamer.as_client.item_renderers.*" 
+             creationComplete="init()" useHandCursor="true" backgroundColor="#000000">
+  
+  <mx:Image id="statusImg" x="10" y="10" height="51" width="21" source="status_disconnected.png" toolTip="Disconnected from Push Server"/>
+  <mx:Image x="39" y="10" height="50" width="193" source="logo.png"/>
+  <mx:Label x="270" y="33" text="Lightstreamer :: AIR :: Basic Stock-List Demo" color="white" width="355" height="28" fontSize="15"/>
+  
+  <mx:Label x="10" y="79" color="#FFFFFF" fontSize="13" width="131" text="Automatic Binding"/>
+  
+  <mx:DataGrid width="615" x="10" height="278" id="tableView" y="109">
+    <mx:columns>
+      <mx:DataGridColumn dataField="stock_name" headerText="Stock" width="123">
+        <mx:itemRenderer>
+          <ns:HighlightCellItemRenderer colors="[0xCCDD00,0xFFFF00]" hotTime="800" fadeTime="800">
+            <ns:hotStyles>
+              <fx:Object fontWeight="bold" />
+            </ns:hotStyles>
+          </ns:HighlightCellItemRenderer>
+        </mx:itemRenderer>  
+      </mx:DataGridColumn>
+      <mx:DataGridColumn textAlign="right" dataField="last_price" headerText="Last" width="100">
+        <mx:itemRenderer>
+          <my:CustomHighlightCellItemRenderer colors="[0xCCDD00,0xFFFF00]" hotTime="0" fadeTime="800"/>
+        </mx:itemRenderer>
+      </mx:DataGridColumn>
+      <mx:DataGridColumn textAlign="right" dataField="time" headerText="Time" width="123">
+        <mx:itemRenderer>
+          <ns:HighlightCellItemRenderer colors="[0xCCDD00,0xFFFF00]" hotTime="800" fadeTime="800" />
+        </mx:itemRenderer>
+      </mx:DataGridColumn>
+      <mx:DataGridColumn textAlign="right" dataField="pct_change" headerText="Change" width="100">
+        <mx:itemRenderer>
+          <my:CustomHighlightCellItemRenderer isChangeField="true" colors="[0xCCDD00,0xFFFF00]" hotTime="800" fadeTime="800" />
+        </mx:itemRenderer>
+      </mx:DataGridColumn>
+      <mx:DataGridColumn textAlign="right" dataField="custom" headerText="Custom (Last+Spread 5%)" width="169">
+        <mx:itemRenderer>
+          <my:CustomHighlightCellItemRenderer colors="[0xCCDD00,0xFFFF00]" hotTime="800" fadeTime="800" />
+        </mx:itemRenderer>
+      </mx:DataGridColumn>
+    </mx:columns> 
+  </mx:DataGrid>  
+  
+  
+  <mx:Button x="633" y="108" label="Fade Highlighting" width="134" click="changeHighlight(800,800,[0xCCDD00,0xFFFF00]);"/>
+  <mx:Button x="633" y="168" label="No Highlighting" width="134" click="changeHighlight(0,0);"/>
+  <mx:Button x="633" y="138" label="Simple Highlighting" click="changeHighlight(800,0,[0xFFFF00]);" width="134"/>
+  <mx:Button id="bt2" x="633" y="198" label="Stop" width="134" click="if (bt2.label=='Stop'){client.unsubscribeTable(visualTable);bt2.label='Start';}else{client.subscribeTable(visualTable);bt2.label='Stop';}" />
+  
+  
+  <mx:Label x="10" y="417" text="Manual Writing" color="#FFFFFF" fontSize="13" width="108"/>
+  
+  <mx:TextArea x="10" y="447" width="615" height="81" id="myTextArea"/>
+  
+  <mx:Button x="633" y="446" label="Clear TextArea" width="134" click="myTextArea.text='';lines=0;"/>
+  <mx:Button id="bt1" x="633" y="476" label="Stop" width="134" click="if (bt1.label=='Stop'){client.unsubscribeTable(nonVisualTable);bt1.label='Start';}else{client.subscribeTable(nonVisualTable);bt1.label='Stop';}" />
+
+  <fx:Script>
+    <![CDATA[
+    import com.lightstreamer.as_client.item_renderers.HighlightCellItemRenderer;
+    import com.lightstreamer.as_client.events.NonVisualItemUpdateEvent;
+    import com.lightstreamer.as_client.events.UnsubscriptionEvent;
+    import com.lightstreamer.as_client.events.LostUpdatesEvent;
+    import com.lightstreamer.as_client.events.EndOfSnapshotEvent;
+    import com.lightstreamer.as_client.events.ServerErrorEvent;
+    import com.lightstreamer.as_client.events.SubscriptionErrorEvent;
+    import com.lightstreamer.as_client.events.SendMessageErrorEvent;
+    import com.lightstreamer.as_client.events.ConnectionDropEvent;
+    import com.lightstreamer.as_client.events.ControlConnectionErrorEvent;
+    import com.lightstreamer.as_client.events.StatusChangeEvent;
+    import com.lightstreamer.as_client.LSClient;
+    import com.lightstreamer.as_client.ConnectionInfo;
+    import com.lightstreamer.as_client.ConnectionPolicy;
+    import com.lightstreamer.as_client.VisualTable;
+    import com.lightstreamer.as_client.NonVisualTable;
+      
+    import com.lightstreamer.as_client.logger.Logger;
+    import com.lightstreamer.as_client.logger.RemoteAppender;
+
+    import mx.events.CollectionEventKind;
+    import mx.events.PropertyChangeEvent;
+    import mx.events.CollectionEvent;
+    import mx.controls.Alert;
+    
+    // Address of Lightstreamer Server
+    public var host:String = "push.lightstreamer.com"; 
+    public var port:uint = 80;
+    public var protocol:String = "http";
+    
+    //This table object will be binded with the DataGrid widget
+    [Bindable]
+    public var visualTable:VisualTable;
+    
+    //update of this table will be reported to the TextArea with custom code
+    public var nonVisualTable:NonVisualTable;
+    
+    //the LSClient object connects to Lightstreamer Server
+    public var client:LSClient;
+    
+    public var columns:Array;
+    
+    public function init():void {
+      client = new LSClient();
+      //client.setMaxBandwidth(5);
+      
+      //add the event listeners for LSClient events. The listener set on this demo
+      //are empty functions
+      client.addEventListener(StatusChangeEvent.STATUS_CHANGE,onStatusChange);
+      client.addEventListener(ServerErrorEvent.SERVER_ERROR,onServerError);
+      client.addEventListener(ConnectionDropEvent.CONNECTION_DROP,onConnectionDrop);
+      client.addEventListener(ControlConnectionErrorEvent.CONTROL_CONNECTION_ERROR,onControlConnectionError);
+      // client.addEventListener(SendMessageErrorEvent.SEND_MESSAGE_ERROR,...); we never do a sendMessage
+      
+      //the ConnectionInfo object represents the information needed to connect 
+      //to Lightstreamer Server
+      var cInfo:ConnectionInfo = new ConnectionInfo();
+      cInfo.server = host;
+      cInfo.adapterSet = "DEMO";
+      cInfo.controlPort = port;
+      cInfo.port = port;
+      cInfo.controlProtocol = protocol;
+      cInfo.protocol = protocol;
+      //cInfo.user = "";
+      //cInfo.password = "";
+      
+      //the ConnectionInfo object represents the policy in use to interact with 
+      //Lightstreamer Server              
+      var cPolicy:ConnectionPolicy = new ConnectionPolicy();
+      //cPolicy.idleTimeout = 30000;
+      //cPolicy.keepaliveInterval = 0;
+      //cPolicy.pollingInterval = 500;
+      //cPolicy.timeoutForStalled = 2000;
+      //cPolicy.timeoutForReconnect = 15000;
+      
+      //Connect to Lightstreamer Server
+      try {
+        client.openConnection(cInfo,cPolicy);
+        //client.openPollingConnection(cInfo,cPolicy);
+      } catch(e:Error) {
+        Alert.show(e.message);
+      }
+      
+      var remoteListener:RemoteAppender = new RemoteAppender(Logger.WARN,client);
+      Logger.getLogger("com.lightstreamer.as_client.LSClient.timeouts").addLoggerListener(remoteListener);
+      
+      tableSubscriptions();   
+    
+    }
+    
+    public var items:Array = new Array("item1","item2","item3","item4","item5","item6","item7","item8","item9","item10");
+    public var fields:Array = new Array("stock_name","last_price","time","pct_change");
+    
+    public function tableSubscriptions():void {
+      visualTable = new VisualTable(items,fields,"MERGE");
+      visualTable.dataAdapter = "QUOTE_ADAPTER";
+      visualTable.snapshotRequired = true;
+      //visualTable.setItemRange(2,3);
+      //visualTable.setKeyPolicy(ITEM_IS_KEY);
+      //visualTable.requestedBufferSize = 1;
+      //visualTable.requestedMaxFrequency = 0.5;
+      //visualTable.selector = "ipse...";
+      visualTable.addEventListener(SubscriptionErrorEvent.SUBSCRIPTION_ERROR,onSubscriptionError);
+      visualTable.addEventListener(EndOfSnapshotEvent.END_OF_SNAPSHOT,onEOS);
+      visualTable.addEventListener(LostUpdatesEvent.LOST_UPDATES,onLost);
+      visualTable.addEventListener(UnsubscriptionEvent.UNSUBSCRIPTION,onUnsub);
+      visualTable.addEventListener(CollectionEvent.COLLECTION_CHANGE,onCollChange);
+      //bind the Table object to the view (the DataGrid)
+      tableView.dataProvider = visualTable;
+      //subscribe the table
+      client.subscribeTable(visualTable);
+      
+      nonVisualTable = new NonVisualTable(items,fields,"MERGE");
+      nonVisualTable.dataAdapter = "QUOTE_ADAPTER";
+      nonVisualTable.snapshotRequired = true;
+      //nonVisualTable.setItemRange(2,3);
+      //nonVisualTable.requestedBufferSize = 1;
+      //nonVisualTable.requestedMaxFrequency = 0.5;
+      //nonVisualTable.selector = "ipse...";
+      nonVisualTable.addEventListener(SubscriptionErrorEvent.SUBSCRIPTION_ERROR,onSubscriptionError);
+      nonVisualTable.addEventListener(EndOfSnapshotEvent.END_OF_SNAPSHOT,onEOS);
+      nonVisualTable.addEventListener(LostUpdatesEvent.LOST_UPDATES,onLost);
+      nonVisualTable.addEventListener(UnsubscriptionEvent.UNSUBSCRIPTION,onUnsub);
+      nonVisualTable.addEventListener(NonVisualItemUpdateEvent.NON_VISUAL_ITEM_UPDATE,onChange);
+      //subscribe the table
+      client.subscribeTable(nonVisualTable);
+    
+    }
+    
+    
+    ////////////////////LSClient event handlers
+    public function onStatusChange(e:StatusChangeEvent):void {
+      if (e.status == LSClient.DISCONNECTED) {
+        statusImg.source = "status_disconnected.png";
+        statusImg.toolTip = "Disconnected from Push Server";
+      } else if (e.status == LSClient.CONNECTING) {
+        statusImg.source = "status_disconnected.png";
+        statusImg.toolTip = "Trying to connect to Push Server...";
+      } else if (e.status == LSClient.POLLING) {
+        statusImg.source = "status_connected_polling.png";
+        statusImg.toolTip = "Connected to Push Server (Smart polling)";
+      } else if (e.status == LSClient.STREAMING) {
+        statusImg.source = "status_connected_streaming.png";
+        statusImg.toolTip = "Connected to Push Server (Streaming)";
+      } else if (e.status == LSClient.STALLED) {
+        statusImg.source = "status_stalled.png";
+        statusImg.toolTip = "Connection to Push Server stalled";
+      }
+    }
+    
+    public function onControlConnectionError(evt:ControlConnectionErrorEvent):void {
+    }
+    
+    public function onConnectionDrop(evt:ConnectionDropEvent):void {
+    }
+    
+    public function onServerError(evt:ServerErrorEvent):void {
+    }
+    
+    ///////////////////Table event handlers (common)
+    
+    public function onSubscriptionError(evt:SubscriptionErrorEvent):void {
+    }
+    
+    public function onEOS(evt:EndOfSnapshotEvent):void {
+    }
+    
+    public function onLost(evt:LostUpdatesEvent):void {
+    }
+    
+    public function onUnsub(evt:UnsubscriptionEvent):void {
+    }
+    
+    
+    
+    
+    ///////////////////VisualTable event handlers
+    
+    //calculates the custom field (last+spread 5%)
+    public function onCollChange(evt:CollectionEvent):void {
+      var i:*;
+      if (evt.kind == CollectionEventKind.UPDATE) { 
+        for (i in evt.items) { 
+          var pcevt:PropertyChangeEvent = evt.items[i] as PropertyChangeEvent;
+          if (pcevt.property == "last_price") {
+            pcevt.source["custom"] =  calculateSpread(pcevt.source["last_price"]);
+          }
+        }
+    
+      } else if (evt.kind == CollectionEventKind.ADD) { 
+        for (i in evt.items) {
+          evt.items[i]["custom"] =  calculateSpread(evt.items[i]["last_price"]);
+        } 
+      }
+    }
+    
+    //helper
+    public function calculateSpread(last:String):Number {
+      var val:Number = new Number(last);
+      val = val + (val/100)*5;
+      return val;
+    }
+    
+    ///////////////////VisualTable ItemRenderer helpers
+    
+    public function changeHighlight(ht:uint,ft:uint,colors:Array = null):void {
+      for (var x:uint = 0; x < tableView.columns.length; x++) {
+        changeColumnHighlight(ht,ft,colors,tableView.columns[x]);
+      }
+    }   
+    
+    public function changeColumnHighlight(ht:uint,ft:uint,colors:Array,column:DataGridColumn):void {    
+      var hcir:HighlightCellItemRenderer = column.itemRenderer as HighlightCellItemRenderer;
+      hcir.hotTime = ht;
+      hcir.fadeTime = ft;
+      hcir.colors = colors;
+      column.itemRenderer = hcir;
+    }
+    
+    
+    ///////////////////NonVisualTable event handlers
+    
+    public var lines:uint = 0;
+    
+    //puts the update infos in the TextArea widget
+    public function onChange(evt:NonVisualItemUpdateEvent):void {
+      //var nFields:uint = evt.numFields;
+      if (lines >= 20) {
+        var cutAt:uint = myTextArea.text.lastIndexOf("||");
+        myTextArea.text = myTextArea.text.substring(0,cutAt);
+      
+      } else {
+        lines++;
+      
+      }
+      
+      
+      var updateStr:String = "Item " + evt.item;
+      updateStr += extractFieldUpdate(evt,"stock_name");
+      updateStr += extractFieldUpdate(evt,"last_price");
+      updateStr += extractFieldUpdate(evt,"time");
+      if (lines > 1) {
+        updateStr += "||\n";
+      }
+      
+      myTextArea.text = flash.utils.getTimer() + ": " + updateStr + myTextArea.text;
+    
+    }       
+    
+    //helper function
+    public function extractFieldUpdate(evt:NonVisualItemUpdateEvent,field:*):String {
+      if (evt.isFieldChanged(field)) {
+        return "| field " + field + " changed: " + evt.getFieldValue(field);
+      } else {
+        return "";
+      }
+    }   
+    
+    
+    ]]>
+  </fx:Script>
+</s:WindowedApplication>
