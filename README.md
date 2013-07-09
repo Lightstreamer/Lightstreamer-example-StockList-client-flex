@@ -45,7 +45,7 @@ In order to proceed with the build process of this demo, the "Flex4_StockListDem
 
 The "Flex4_StockListDemo/deploy" folder contains a deployment image of the demo, which includes a container page and other web resources. If you have not skipped the previous step you have to complete this by replacing the built Flex application (Flex4StockListDemo.swf).
 
-This deployment image is ready to be deployed under Lightstreamer's internal Web Server, by copying all the contents into the "pages" directory.
+This deployment image is ready to be deployed under Lightstreamer's internal Web Server, by copying all the contents into the "pages" directory.<br>
 
 By the current configuration, the demo tries to access Lightstreamer Server by using the protocol, hostname and port from which the "index.html" page was requested; in other words, the demo assumes that the static resources are deployed inside Lightstreamer Server.<br>
 In order to deploy the demo static resources on an external Web Server, some changes are needed on the deployment image before or after copying it into the Web Server folders.
