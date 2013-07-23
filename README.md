@@ -30,9 +30,9 @@ Tables involved:
 
 ## Build ##
 
-If you want to skip the build process of this demo please note that the "Flex4_StockListDemo/deploy" folder of this project contains a ready-made deployment resource for Lightstreamer's internal Web Server.<br>
+If you want to skip the build process of this demo please note that in the [deploy release](https://github.com/Weswit/Lightstreamer-example-StockList-client-flex/releases) of this project you can find the "deploy.zip" file that contains a ready-made deployment resource for the Lightstreamer server.<br>
 
-In order to proceed with the build process of this demo, the "Flex4_StockListDemo" folder of this project includes the following sub-folders:
+Otherwise, in order to proceed with the build process of this demo, the "Flex4_StockListDemo" folder of this project includes the following sub-folders:
 
 * /src<br>
   Contains the sources to build the Flex application. The code of demo is based on Flex 4 SDK.
@@ -43,7 +43,8 @@ In order to proceed with the build process of this demo, the "Flex4_StockListDem
 
 ## Deploy ##
 
-The "Flex4_StockListDemo/deploy" folder contains a deployment image of the demo, which includes a container page and other web resources. If you have not skipped the previous step you have to complete this by replacing the built Flex application (Flex4StockListDemo.swf).
+The "Flex4_StockListDemo/deploy" folder contains a deployment image of the demo, which includes a container page and other web resources. If you have not skipped the previous step you have to complete this with the built Flex application (Flex4StockListDemo.swf) and the swfobject.js version 2.2 file form [SWFObject 2](http://code.google.com/p/swfobject/downloads/list).
+Otherwise get the ready-made "Flex4_StockListDemo" deploy folder from "deploy.zip" of the [latest release](https://github.com/Weswit/Lightstreamer-example-StockList-client-flex/releases) of this project.
 
 This deployment image is ready to be deployed under Lightstreamer's internal Web Server, by copying all the contents into the "pages" directory.<br>
 
@@ -75,10 +76,9 @@ This is the AIR version of the [Flex Demo](https://github.com/Weswit/Lightstream
 
 ## Build ##
 
+If you want to skip the build process of this demo please note that in the [deploy release](https://github.com/Weswit/Lightstreamer-example-StockList-client-flex/releases) of this project you can find the "deploy.zip" file that contains the AIR package, ready to be installed.<br>
 
-If you want to skip the build process of this demo please note that the "AIR4_StockListDemo/deploy" folder of this project contains the AIR package, ready to be installed.<br>
-
-In order to proceed with the build process of this demo, the "AIR4_StockListDemo" folder of this project includes the following sub-folders:
+Otherwise, in order to proceed with the build process of this demo, the "AIR4_StockListDemo" folder of this project includes the following sub-folders:
 
 * /src<br>
   Contains the sources to build the AIR application. The code is based on Flex 4 SDK.
