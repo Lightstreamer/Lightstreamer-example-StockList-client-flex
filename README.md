@@ -43,7 +43,7 @@ Otherwise, in order to proceed with the build process of this demo, the "Flex4_S
 
 ## Deploy ##
 
-The "Flex4_StockListDemo/deploy" folder contains a deployment image of the demo, which includes a container page and other web resources. If you have not skipped the previous step you have to complete this with the built Flex application (Flex4StockListDemo.swf) and the swfobject.js version 2.2 file form [SWFObject 2](http://code.google.com/p/swfobject/downloads/list).
+The "Flex4_StockListDemo/deploy" folder contains a deployment image of the demo, which includes a container page and other web resources. If you have not skipped the previous step you have to complete this with the built Flex application (Flex4StockListDemo.swf) and the swfobject.js version 2.2 file from [SWFObject 2](http://code.google.com/p/swfobject/downloads/list).
 Otherwise get the ready-made "Flex4_StockListDemo" deploy folder from "deploy.zip" of the [latest release](https://github.com/Weswit/Lightstreamer-example-StockList-client-flex/releases) of this project.
 
 This deployment image is ready to be deployed under Lightstreamer's internal Web Server, by copying all the contents into the "pages" directory.<br>
