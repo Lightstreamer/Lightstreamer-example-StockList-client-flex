@@ -1,4 +1,3 @@
-
 # Lightstreamer StockList Demo Client for Adobe Flex SDK #
 
 This project contains simple Flex applications fed through a Lightstreamer connection based on [Lightstreamer StockList Demo Adapter](https://github.com/Weswit/Lightstreamer-example-Stocklist-adapter-java); the demos are written for Flex 4 SDK and one of the the two is ready for deployment as an Adobe AIR application.
@@ -8,7 +7,7 @@ This project contains simple Flex applications fed through a Lightstreamer conne
 <table>
   <tr>
     <td style="text-align: left">
-      &nbsp;<a href="http://demos.lightstreamer.com/Flex_StockListDemo/" target="_blank"><img src="http://www.lightstreamer.com/img/demo/screen_flex.png"></a>&nbsp;
+      &nbsp;<a href="http://demos.lightstreamer.com/Flex_StockListDemo/" target="_blank"><img src="screen_flex.png"></a>&nbsp;
       
     </td>
     <td>
@@ -62,7 +61,7 @@ The demos are now ready to be launched.
 <table>
   <tr>
     <td style="text-align: left">
-      &nbsp;<a href="http://demos.lightstreamer.com/AIR_StockListDemo/LightstreamerAIRDemoFlex4.air" target="_blank"><img src="http://www.lightstreamer.com/img/demo/screen_air.png"></a>&nbsp;
+      &nbsp;<a href="http://demos.lightstreamer.com/AIR_StockListDemo/LightstreamerAIRDemoFlex4.air" target="_blank"><img src="screen_air.png"></a>&nbsp;
       
     </td>
     <td>
@@ -113,3 +112,4 @@ The demo can be reconfigured and recompiled in order to connect to the local ins
 # Lightstreamer Compatibility Notes #
 
 - Compatible with Lightstreamer Flex client API version 2.1 or newer.
+- For Lightstreamer Allegro (+ Flex Client API support), Presto, Vivace.
