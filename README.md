@@ -3,6 +3,7 @@
 This project contains simple Flex applications fed through a Lightstreamer connection based on [Lightstreamer StockList Demo Adapter](https://github.com/Weswit/Lightstreamer-example-Stocklist-adapter-java); the demos are written for Flex 4 SDK and one of the the two is ready for deployment as an Adobe AIR application.
 
 # Basic Stock-List Demo - Flex Client #
+<!-- START DESCRIPTION lightstreamer-example-stocklist-client-flex-basic-stock-list-demo---flex-client -->
 
 <table>
   <tr>
@@ -26,6 +27,8 @@ The lower table shows the direct use of pushed values to manually update a Flex 
 Tables involved:
 * A [VisualTable](http://www.lightstreamer.com/docs/client_flex_asdoc/com/lightstreamer/as_client/VisualTable.html) containing 10 items, subscribed to in <b>MERGE</b> mode, bound to the Flex DataGrid.
 * A [NonVisualTable](http://www.lightstreamer.com/docs/client_flex_asdoc/com/lightstreamer/as_client/NonVisualTable.html) containing 10 items, subscribed to in <b>MERGE</b> mode, used to get the events to write into the Flex TextArea.
+
+<!-- END DESCRIPTION lightstreamer-example-stocklist-client-flex-basic-stock-list-demo---flex-client -->
 
 ## Build ##
 
@@ -57,6 +60,7 @@ Anyway the [QUOTE_ADAPTER](https://github.com/Weswit/Lightstreamer-example-Stock
 The demos are now ready to be launched.
 
 # Basic Stock-List Demo - Flex (AIR) Client #
+<!-- START DESCRIPTION lightstreamer-example-stocklist-client-flex-basic-stock-list-demo---flex-air-client -->
 
 <table>
   <tr>
@@ -72,6 +76,8 @@ The demos are now ready to be launched.
 </table>
 
 This is the AIR version of the [Flex Demo](https://github.com/Weswit/Lightstreamer-example-StockList-client-flex#flex--stock-list-demo).
+
+<!-- END DESCRIPTION lightstreamer-example-stocklist-client-flex-basic-stock-list-demo---flex-air-client -->
 
 ## Build ##
 
@@ -96,9 +102,12 @@ The demo can be reconfigured and recompiled in order to connect to the local ins
 # See Also #
 
 ## Lightstreamer Adapters needed by these demo clients ##
+<!-- START RELATED_ENTRIES -->
 
 * [Lightstreamer - Stock- List Demo - Java Adapter](https://github.com/Weswit/Lightstreamer-example-Stocklist-adapter-java)
 * [Lightstreamer - Reusable Metadata Adapters- Java Adapter](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java)
+
+<!-- END RELATED_ENTRIES -->
 
 ## Similar demo clients that may interest you ##
 
