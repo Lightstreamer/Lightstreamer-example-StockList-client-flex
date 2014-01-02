@@ -75,7 +75,7 @@ The demos are now ready to be launched.
   </tr>
 </table>
 
-This is the AIR version of the [Flex Demo](https://github.com/Weswit/Lightstreamer-example-StockList-client-flex#flex--stock-list-demo).
+This is the AIR version of the [Flex Demo](https://github.com/Weswit/Lightstreamer-example-StockList-client-flex#basic-stock-list-demo---flex-client).
 
 <!-- END DESCRIPTION lightstreamer-example-stocklist-client-flex-basic-stock-list-demo---flex-air-client -->
 
