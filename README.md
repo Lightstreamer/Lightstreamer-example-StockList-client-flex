@@ -5,18 +5,8 @@ This project contains simple Flex applications fed through a Lightstreamer conne
 # Basic Stock-List Demo - Flex Client #
 <!-- START DESCRIPTION lightstreamer-example-stocklist-client-flex-basic-stock-list-demo---flex-client -->
 
-<table>
-  <tr>
-    <td style="text-align: left">
-      &nbsp;<a href="http://demos.lightstreamer.com/Flex_StockListDemo/" target="_blank"><img src="screen_flex.png"></a>&nbsp;
-      
-    </td>
-    <td>
-      &nbsp;An online demonstration is hosted on our servers at:<br>
-      &nbsp;<a href="http://demos.lightstreamer.com/Flex_StockListDemo/" target="_blank">http://demos.lightstreamer.com/Flex_StockListDemo</a>
-    </td>
-  </tr>
-</table>
+![Demo ScreenShot](screen_flex_large.png)<br>
+An online demonstration is hosted on our servers at: [http://demos.lightstreamer.com/Flex_StockListDemo](http://demos.lightstreamer.com/Flex_StockListDemo)<br>
 
 This is a Flex version of the [Stock-List Demos](https://github.com/Weswit/Lightstreamer-example-StockList-client-javascript), where ten items are subscribed to.<br>
 This app uses the <b>Flex Client API for Lightstreamer</b> to handle the communications with Lightstreamer Server and uses the <b>Flex DataGrid</b> to display the real-time data pushed by Lightstreamer Server.<br>
@@ -62,18 +52,8 @@ The demos are now ready to be launched.
 # Basic Stock-List Demo - Flex (AIR) Client #
 <!-- START DESCRIPTION lightstreamer-example-stocklist-client-flex-basic-stock-list-demo---flex-air-client -->
 
-<table>
-  <tr>
-    <td style="text-align: left">
-      &nbsp;<a href="http://demos.lightstreamer.com/AIR_StockListDemo/LightstreamerAIRDemoFlex4.air" target="_blank"><img src="screen_air.png"></a>&nbsp;
-      
-    </td>
-    <td>
-      &nbsp;Click here to download and install the application:<br>
-      &nbsp;<a href="http://demos.lightstreamer.com/AIR_StockListDemo/LightstreamerAIRDemoFlex4.air" target="_blank">http://demos.lightstreamer.com/AIR_StockListDemo/LightstreamerAIRDemoFlex4.air</a>
-    </td>
-  </tr>
-</table>
+![Demo ScreenShot](screen_air_large.png)<br>
+[Click here to download and install the application](http://demos.lightstreamer.com/AIR_StockListDemo/LightstreamerAIRDemoFlex4.air).<br>
 
 This is the AIR version of the [Flex Demo](https://github.com/Weswit/Lightstreamer-example-StockList-client-flex#basic-stock-list-demo---flex-client).
 
