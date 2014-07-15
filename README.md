@@ -63,20 +63,33 @@ The demos are now ready to be launched.
 
 
 ## Basic Stock-List Demo - Flex (AIR) Client
-<!-- START DESCRIPTION lightstreamer-example-stocklist-client-flex-basic-stock-list-demo---flex-air-client -->
+
+### Live Demo
 
 [![Demo ScreenShot](screen_air_large.png)](http://demos.lightstreamer.com/AIR_StockListDemo/LightstreamerAIRDemoFlex4.air)<br>
-[Click here to download and install the application](http://demos.lightstreamer.com/AIR_StockListDemo/LightstreamerAIRDemoFlex4.air).<br>
+###[![](http://demos.lightstreamer.com/site/img/play.png) View live demo](http://demos.lightstreamer.com/AIR_StockListDemo/LightstreamerAIRDemoFlex4.air)<br>
+
+### Details
+<!-- START DESCRIPTION lightstreamer-example-stocklist-client-flex-basic-stock-list-demo---flex-air-client -->
 
 This is the AIR version of the [Flex Demo](https://github.com/Weswit/Lightstreamer-example-StockList-client-flex#basic-stock-list-demo---flex-client).
 
 <!-- END DESCRIPTION lightstreamer-example-stocklist-client-flex-basic-stock-list-demo---flex-air-client -->
 
-## Build ##
 
-If you want to skip the build process of this demo please note that in the [deploy release](https://github.com/Weswit/Lightstreamer-example-StockList-client-flex/releases) of this project you can find the "deploy.zip" file that contains the AIR package, ready to be installed.<br>
+### Install 
 
-Otherwise, in order to proceed with the build process of this demo, the "AIR4_StockListDemo" folder of this project includes the following sub-folders:
+
+If you want to install a version of this demo pointing to your local Lightstreamer Server, follow these steps:
+
+* Note that, as prerequisite, the [Lightstreamer - Stock- List Demo - Java Adapter](https://github.com/Weswit/Lightstreamer-example-Stocklist-adapter-java) has to be deployed on your local Lightstreamer Server instance. Please check out that project and follow the installation instructions provided with it.
+* Launch Lightstreamer Server.
+* Download the `deploy.zip` file that you can find in the [deploy release](https://github.com/Weswit/Lightstreamer-example-StockList-client-flex/releases) of this project and extract the the `Air4_StockListDemo` folder.
+* Launch the `LightstreamerAIRDemoFlex4.air` AIR application, the [Adobe AIR runtime](http://get.adobe.com/air/) is required.
+
+#### Build
+
+To build your own version of `LightstreamerAIRDemoFlex4.air`, instead of using the one provided in the deploy.zip file from the Install section above, the "AIR4_StockListDemo" folder of this project includes the following sub-folders:
 
 * /src<br>
   Contains the sources to build the AIR application. The code is based on Flex 4 SDK.
