@@ -87,27 +87,27 @@ If you want to install a version of this demo pointing to your local Lightstream
 * Download the `deploy.zip` file that you can find in the [deploy release](https://github.com/Weswit/Lightstreamer-example-StockList-client-flex/releases) of this project and extract the the `Air4_StockListDemo` folder.
 * Launch the `LightstreamerAIRDemoFlex4.air` AIR application, the [Adobe AIR runtime](http://get.adobe.com/air/) is required.
 
-#### Build
+### Build
 
 To build your own version of `LightstreamerAIRDemoFlex4.air`, instead of using the one provided in the deploy.zip file from the Install section above, the "AIR4_StockListDemo" folder of this project includes the following sub-folders:
 
-* /src<br>
+* `/src`<br>
   Contains the sources to build the AIR application. The code is based on Flex 4 SDK.
 
-* /lib<br>
+* `/lib`<br>
   Should contain the Lightstreamer library to be used for the build process.<br>
-  Please, download the [latest Lightstreamer distribution](http://www.lightstreamer.com/download) and copy the Lightstreamer_as_client.swc file from the Lightstreamer Flex Client SDK (that is located under the /DOCS-SDKs/sdk_client_flex/lib folder) into this folder of the project.
+  Please, download the [latest Lightstreamer distribution](http://www.lightstreamer.com/download) and copy the `Lightstreamer_as_client.swc` file from the Lightstreamer Flex Client SDK (that is located under the `/DOCS-SDKs/sdk_client_flex/lib` folder) into this folder of the project.
 
-## Deploy ##
+#### Deploy
 
 In order to install and run the AIR application, the [Adobe AIR runtime](http://get.adobe.com/air/) is required.<br>
 
-By the current configuration, specified in "AIR4StockListDemo.mxml" and used in the provided AIR package, the demo tries to connect to the demo server currently running on Lightstreamer website.
+By the current configuration, specified in `AIR4StockListDemo.mxml` and used in the provided AIR package, the demo tries to connect to the demo server currently running on Lightstreamer website.
 The demo can be reconfigured and recompiled in order to connect to the local installation of Lightstreamer Server. The host name, the port number, the Adapter Set names and the Data Adapter names should all be changed in the source code.
 
-# See Also #
+## See Also
 
-## Lightstreamer Adapters Needed by These Demo Clients ##
+### Lightstreamer Adapters Needed by These Demo Clients
 <!-- START RELATED_ENTRIES -->
 
 * [Lightstreamer - Stock- List Demo - Java Adapter](https://github.com/Weswit/Lightstreamer-example-Stocklist-adapter-java)
@@ -115,7 +115,7 @@ The demo can be reconfigured and recompiled in order to connect to the local ins
 
 <!-- END RELATED_ENTRIES -->
 
-## Related Projects ##
+### Related Projects
 
 * [Lightstreamer - Stock-List Demos - HTML Clients](https://github.com/Weswit/Lightstreamer-example-Stocklist-client-javascript)
 * [Lightstreamer - Basic Stock-List Demo - jQuery (jqGrid) Client](https://github.com/Weswit/Lightstreamer-example-StockList-client-jquery)
@@ -124,7 +124,7 @@ The demo can be reconfigured and recompiled in order to connect to the local ins
 * [Lightstreamer - Basic Stock-List Demo - .NET Client](https://github.com/Weswit/Lightstreamer-example-StockList-client-dotnet)
 * [Lightstreamer - Stock-List Demos - Flex Clients](https://github.com/Weswit/Lightstreamer-example-StockList-client-flex)
 
-# Lightstreamer Compatibility Notes #
+## Lightstreamer Compatibility Notes
 
-- Compatible with Lightstreamer Flex client API version 2.1 or newer.
-- For Lightstreamer Allegro (+ Flex Client API support), Presto, Vivace.
+* Compatible with Lightstreamer Flex client API version 2.1 or newer.
+* For Lightstreamer Allegro (+ Flex Client API support), Presto, Vivace.
