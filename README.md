@@ -43,8 +43,8 @@ To build your own version of `Flex4StockListDemo.swf`, instead of using the one 
   Contains the sources to build the Flex application. The code of demo is based on Flex 4 SDK.
 
 * `/lib`<br>
-  Should contain the Lightstreamer library to be used for the build process.<br>
-  Please, download the [latest Lightstreamer distribution](http://www.lightstreamer.com/download) and copy the Lightstreamer_as_client.swc file from the Lightstreamer Flex Client SDK (that is located under the `/DOCS-SDKs/sdk_client_flex/lib` folder) into this folder of the project.
+  Should contain the Lightstreamer library, to be used for the build process.<br>
+  Please download the [latest Lightstreamer distribution](http://www.lightstreamer.com/download) and copy the Lightstreamer_as_client.swc file from the Lightstreamer Flex Client SDK (that is located under the `/DOCS-SDKs/sdk_client_flex/lib` folder) into this folder of the project.
 
 #### Deploy
 
@@ -52,13 +52,13 @@ The `Flex4_StockListDemo/deploy` folder contains a deployment image of the demo,
 
 This deployment image is ready to be deployed under Lightstreamer's internal Web Server, by copying all the contents into the `pages` directory.<br>
 
-By the current configuration, the demo tries to access Lightstreamer Server by using the protocol, hostname and port from which the `index.html` page was requested; in other words, the demo assumes that the static resources are deployed inside Lightstreamer Server.<br>
-In order to deploy the demo static resources on an external Web Server, some changes are needed on the deployment image before or after copying it into the Web Server folders.
+By the current configuration, the demo tries to access Lightstreamer Server by using the protocol, hostname, and port from which the `index.html` page was requested; in other words, the demo assumes that the static resources are deployed inside Lightstreamer Server.<br>
+To deploy the demo static resources on an external Web Server, some changes are needed on the deployment image before or after copying it into the Web Server folders.
 The configuration of the hostname and port (and maybe the protocol) to be used to access Lightstreamer Server should be changed. The configuration lines can be easily found at the beginning of the `index.html` file and can be modified manually, without the need for a recompilation.<br>
-Then, in order to allow the page to get resources from a different server, the Web Server address has to be included in the `/crossdomain.xml` file deployed under Lightstreamer Server.
+Then, to allow the page to get resources from a different server, the Web Server address has to be included in the `/crossdomain.xml` file deployed under Lightstreamer Server.
 See the <flex_crossdomain_enabled> element in the Server configuration file for details.
 
-Anyway the [QUOTE_ADAPTER](https://github.com/Weswit/Lightstreamer-example-Stocklist-adapter-java) and [LiteralBasedProvider](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java) have to be deployed in your local Lightstreamer server instance. The factory configuration of Lightstreamer server already provides this adapter deployed.<br>
+Anyway, the [QUOTE_ADAPTER](https://github.com/Weswit/Lightstreamer-example-Stocklist-adapter-java) and [LiteralBasedProvider](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java) have to be deployed in your local Lightstreamer server instance. The factory configuration of Lightstreamer server already provides this adapter deployed.<br>
 The demos are now ready to be launched.
 
 
@@ -95,15 +95,15 @@ To build your own version of `LightstreamerAIRDemoFlex4.air`, instead of using t
   Contains the sources to build the AIR application. The code is based on Flex 4 SDK.
 
 * `/lib`<br>
-  Should contain the Lightstreamer library to be used for the build process.<br>
-  Please, download the [latest Lightstreamer distribution](http://www.lightstreamer.com/download) and copy the `Lightstreamer_as_client.swc` file from the Lightstreamer Flex Client SDK (that is located under the `/DOCS-SDKs/sdk_client_flex/lib` folder) into this folder of the project.
+  Should contain the Lightstreamer library, to be used for the build process.<br>
+  Please download the [latest Lightstreamer distribution](http://www.lightstreamer.com/download) and copy the `Lightstreamer_as_client.swc` file from the Lightstreamer Flex Client SDK (located under the `/DOCS-SDKs/sdk_client_flex/lib` folder) into this folder of the project.
 
 #### Deploy
 
-In order to install and run the AIR application, the [Adobe AIR runtime](http://get.adobe.com/air/) is required.<br>
+To install and run the AIR application, the [Adobe AIR runtime](http://get.adobe.com/air/) is required.<br>
 
 By the current configuration, specified in `AIR4StockListDemo.mxml` and used in the provided AIR package, the demo tries to connect to the demo server currently running on Lightstreamer website.
-The demo can be reconfigured and recompiled in order to connect to the local installation of Lightstreamer Server. The host name, the port number, the Adapter Set names and the Data Adapter names should all be changed in the source code.
+The demo can be reconfigured and recompiled to connect to the local installation of Lightstreamer Server. The host name, the port number, the Adapter Set names, and the Data Adapter names should all be changed in the source code.
 
 ## See Also
 
