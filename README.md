@@ -7,7 +7,7 @@ This project contains simple Flex applications fed through a Lightstreamer conne
 ### Live Demo
 
 [![Demo ScreenShot](screen_flex_large.png)](http://demos.lightstreamer.com/Flex_StockListDemo)<br>
-###[![](http://demos.lightstreamer.com/site/img/play.png) View live demo](http://demos.lightstreamer.com/Flex_StockListDemo)<br>
+### [![](http://demos.lightstreamer.com/site/img/play.png) View live demo](http://demos.lightstreamer.com/Flex_StockListDemo)<br>
 
 ### Details
 
@@ -68,7 +68,7 @@ The demos are now ready to be launched.
 ### Live Demo
 
 [![Demo ScreenShot](screen_air_large.png)](http://demos.lightstreamer.com/AIR_StockListDemo/LightstreamerAIRDemoFlex4.air)<br>
-###[![](http://demos.lightstreamer.com/site/img/play.png) View live demo](http://demos.lightstreamer.com/AIR_StockListDemo/LightstreamerAIRDemoFlex4.air)<br>
+### [![](http://demos.lightstreamer.com/site/img/play.png) View live demo](http://demos.lightstreamer.com/AIR_StockListDemo/LightstreamerAIRDemoFlex4.air)<br>
 
 ### Details
 <!-- START DESCRIPTION lightstreamer-example-stocklist-client-flex-basic-stock-list-demo---flex-air-client -->
