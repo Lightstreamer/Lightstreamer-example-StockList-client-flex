@@ -20,8 +20,8 @@ The upper table shows the automatic binding of a Lightstreamer data table to a F
 The lower table shows the direct use of pushed values to manually update a Flex widget (a TextArea). The buttons to the right can clear the TextArea and stop/start the subscription.
 
 Tables involved:
-* A [VisualTable](http://www.lightstreamer.com/docs/client_flex_asdoc/com/lightstreamer/as_client/VisualTable.html) containing 10 items, subscribed to in <b>MERGE</b> mode, bound to the Flex DataGrid.
-* A [NonVisualTable](http://www.lightstreamer.com/docs/client_flex_asdoc/com/lightstreamer/as_client/NonVisualTable.html) containing 10 items, subscribed to in <b>MERGE</b> mode, used to get the events to write into the Flex TextArea.
+* A [VisualTable](https://lightstreamer.com/api/ls-flex-client/latest/com/lightstreamer/as_client/VisualTable.html) containing 10 items, subscribed to in <b>MERGE</b> mode, bound to the Flex DataGrid.
+* A [NonVisualTable](https://lightstreamer.com/api/ls-flex-client/latest/com/lightstreamer/as_client/NonVisualTable.html) containing 10 items, subscribed to in <b>MERGE</b> mode, used to get the events to write into the Flex TextArea.
 
 <!-- END DESCRIPTION lightstreamer-example-stocklist-client-flex-basic-stock-list-demo---flex-client -->
 
