@@ -44,7 +44,7 @@ To build your own version of `Flex4StockListDemo.swf`, instead of using the one 
 
 * `/lib`<br>
   Should contain the Lightstreamer library, to be used for the build process.<br>
-  Please download the [latest Lightstreamer distribution](http://www.lightstreamer.com/download) and copy the Lightstreamer_as_client.swc file from the Lightstreamer Flex Client SDK (that is located under the `/DOCS-SDKs/sdk_client_flex/lib` folder) into this folder of the project.
+  Please Download the latest `Lightstreamer_as_client.swc` library file from the [Lightstreamer Flex Client SDK resources](https://lightstreamer.com/res/ls-flex-client/latest/usage.html) into this folder of the project.
 
 #### Deploy
 
@@ -97,7 +97,7 @@ To build your own version of `LightstreamerAIRDemoFlex4.air`, instead of using t
 
 * `/lib`<br>
   Should contain the Lightstreamer library, to be used for the build process.<br>
-  Please download the [latest Lightstreamer distribution](http://www.lightstreamer.com/download) and copy the `Lightstreamer_as_client.swc` file from the Lightstreamer Flex Client SDK (located under the `/DOCS-SDKs/sdk_client_flex/lib` folder) into this folder of the project.
+  Please Download the latest `Lightstreamer_as_client.swc` library file from the [Lightstreamer Flex Client SDK resources](https://lightstreamer.com/res/ls-flex-client/latest/usage.html) into this folder of the project.
 
 #### Deploy
 
